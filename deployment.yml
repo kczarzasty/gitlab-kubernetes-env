@@ -1,0 +1,31 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: tropicalhosting
+ namespace: ${NAMESPACE}
+spec:
+ strategy:
+ type: RollingUpdate
+ rollingUpdate:
+ maxSurge: 1
+ maxUnavailable: 0
+ template:
+ metadata:
+ labels:
+ app: tropicalhosting
+ spec:
+ terminationGracePeriodSeconds: 60
+ containers:
+ — image: gitlabregistry/user/tropicalhosting:${BUILD_NUMBER}
+ name: tropicalhosting
+ imagePullPolicy: Always
+ ports:
+ — containerPort: 80
+ livenessProbe:
+ httpGet:
+ path: /
+ port: 80
+ initialDelaySeconds: 30
+ timeoutSeconds: 1
+ imagePullSecrets:
+ — name: registrypullsecret
