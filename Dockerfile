@@ -1,3 +1,4 @@
+#working through this to gain operability
 FROM debian:jessie
 MAINTAINER NGINX Docker Maintainers “docker-maint@nginx.com”
 ENV NGINX_VERSION 1.11.9–1~jessie
