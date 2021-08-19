@@ -1,3 +1,4 @@
+#note this is inoperable; seeking resolution
 variables:
  DOCKER_DRIVER: overlay
  IMAGE_NAME: “gilabregistry/user/tropicalhosting”
